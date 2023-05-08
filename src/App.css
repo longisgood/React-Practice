@@ -2,6 +2,25 @@
   text-align: center;
 }
 
+
+.start {
+  opacity: 0;
+
+}
+
+.end {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.main-bg {
+  height: 300px;
+  object-fit: fill;
+  background-image: url('./img/main.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -32,6 +51,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
