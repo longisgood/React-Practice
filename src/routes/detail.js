@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 let YellowBtn = styled.button`
     background : ${props => props.bg};
-    color : ${props => props.bg == 'blue' ? 'white' : 'blakc'};
+    color : ${props => props.bg == 'blue' ? 'white' : 'black'};
     padding : 10px;
 `
 let Box = styled.div`
@@ -19,7 +19,6 @@ let Box = styled.div`
 
 
 function Detail(props) {
-
 
     let dispatch = useDispatch();
 
@@ -45,6 +44,17 @@ function Detail(props) {
     let [tab, setTab] = useState(0);
 
     let { id } = useParams();
+
+
+    useEffect(() => {
+        let lastest = localStorage.getItem('watched');
+        lastest = JSON.parse(lastest);
+        lastest.push(id);
+        lastest = new Set(lastest);
+        lastest = Array.from(lastest);
+        localStorage.setItem('watched', JSON.stringify(lastest));
+    }, []);
+
     let num = parseInt(id) + 1;
     let url = "https://codingapple1.github.io/shop/shoes" + num + ".jpg";
     let findId = props.shoes.find(function (a) {
@@ -125,6 +135,7 @@ function TabContent({ tab }) {
         </div>
     )
 }
+
 
 
 export default Detail;
